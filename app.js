@@ -14,9 +14,10 @@ var app = express();
 AWS.config.getCredentials(function(err) {
   if (err) console.log(err.stack);
   // credentials not loaded
+  // add your shared credential at ~/.aws/credentials see .aws.credentials.example
   else {
     console.log("Access key:", AWS.config.credentials.accessKeyId);
-    AWS.config.update({region: 'ap-southeast-1'});
+    AWS.config.update({region: process.env.AWS_REGION});
     // console.log("Region: ", AWS.config);
   }
 });
